@@ -1,13 +1,44 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RootLayout } from "./layouts/RootLayout";
+import { RestaurantList } from "./components/RestaurantList";
+import { DetailRestaurantCard } from "./components/DetailRestaurantCard";
+import { CardLayout } from "./layouts/CardLayout";
+import { RestaurantsPage } from "./pages/RestaurantsPage";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+//https://gist.github.com/andreynaz4renko/445096cfdbb60413573d63500124d968
+//https://www.figma.com/file/OEMzojLNVhCeukpmTfHZ4i/Rover-Photos?type=design&node-id=0-1&mode=design&t=LJgiIGCNNNV8MgH1-0
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        path: "/",
+        element: <RestaurantsPage />,
+      },
+    ],
+  },
+  {
+    path: "/:id",
+    element: <CardLayout />,
+    children: [
+      {
+        path: "/:id",
+        element: <DetailRestaurantCard />,
+      },
+    ],
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
