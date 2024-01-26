@@ -1,6 +1,6 @@
 import React from "react";
 import { InfoBox } from "../InfoBox";
-import clsx from "clsx";
+import { StarIcon } from "@heroicons/react/24/outline";
 
 export const RestaurantCard = ({
   id,
@@ -22,11 +22,10 @@ export const RestaurantCard = ({
         <div>
           <div className="flex flex-row justify-between text-xl font-semibold">
             <h1 className="cursor-pointer">{name}</h1>
-            <span className="px-2 ">
-              <span className="material-symbols-rounded align-top text-amber-400">
-                star
-              </span>{" "}
-              {rating}
+            <span className="flex items-center">
+              <StarIcon className="h-6 w-6 stroke-amber-400" />
+
+              <span className="mt-[2px]">{rating}</span>
             </span>
           </div>
           <div>Адрес: {address}</div>

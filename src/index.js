@@ -4,9 +4,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { RootLayout } from "./layouts/RootLayout";
-import { RestaurantList } from "./components/RestaurantList";
 import { DetailRestaurantCard } from "./components/DetailRestaurantCard";
-import { CardLayout } from "./layouts/CardLayout";
 import { RestaurantsPage } from "./pages/RestaurantsPage";
 
 //https://gist.github.com/andreynaz4renko/445096cfdbb60413573d63500124d968
@@ -21,12 +19,6 @@ const router = createBrowserRouter([
         path: "/",
         element: <RestaurantsPage />,
       },
-    ],
-  },
-  {
-    path: "/:id",
-    element: <CardLayout />,
-    children: [
       {
         path: "/:id",
         element: <DetailRestaurantCard />,
