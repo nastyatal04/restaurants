@@ -20,12 +20,13 @@ export const RestaurantsPage = () => {
   };
 
   useEffect(() => {
-    const searchText = searchPar.get("search");
+    const searchText = searchPar.get("search")?.toLowerCase() || "";
+
     const results = restaurant_data.filter(
       (rest) =>
-        rest.name.toLowerCase().includes(searchText.toLowerCase()) ||
-        rest.address.toLowerCase().includes(searchText.toLowerCase()) ||
-        rest.description.toLowerCase().includes(searchText.toLowerCase())
+        rest.name?.toLowerCase().includes(searchText) ||
+        rest.address?.toLowerCase().includes(searchText) ||
+        rest.description?.toLowerCase().includes(searchText)
     );
     setFilterRest(results);
   }, [searchPar]);
